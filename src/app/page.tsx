@@ -17,6 +17,7 @@ import { Calendar, Clock } from 'lucide-react';
 import Image from 'next/image';
 import { MdOutlineStadium } from 'react-icons/md';
 
+import NextMatch from '@/components/next-match';
 import Table from '@/components/table';
 
 interface Team {
@@ -31,7 +32,7 @@ export default function Home() {
 
   return (
     <div className="flex h-full w-full flex-col justify-center gap-4 p-4">
-      <Card className="w-full">
+      <Card className="h-fit w-full">
         <CardHeader className="flex flex-col">
           <CardTitle className="flex items-center justify-center gap-1">
             <Calendar size={24} />
@@ -101,7 +102,7 @@ export default function Home() {
         </CardFooter>
       </Card>
 
-      <Card className="w-full">
+      <Card className="h-1/2 w-full overflow-auto">
         <Tabs className="w-full" defaultValue="table">
           <CardHeader className="px-4">
             <TabsList>
@@ -111,11 +112,17 @@ export default function Home() {
             </TabsList>
           </CardHeader>
 
-          <CardContent>
+          <CardContent className="w-full px-4">
             <TabsContent value="table">
               <Table />
             </TabsContent>
-            <TabsContent value="next-matches">next matches</TabsContent>
+            <TabsContent value="next-matches">
+              <div className="flex flex-col gap-4">
+                {data.nextMatchesData.map((match, index) => {
+                  return <NextMatch key={index} match={match} />;
+                })}
+              </div>
+            </TabsContent>
             <TabsContent value="last-matches">last-matches</TabsContent>
           </CardContent>
         </Tabs>

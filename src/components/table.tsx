@@ -17,7 +17,7 @@ import { cn } from '@/lib/utils';
 
 export default function Component() {
   return (
-    <Table>
+    <Table className="overflow-auto">
       <TableHeader>
         <TableRow className="whitespace-nowrap bg-accent font-bold">
           <TableHead colSpan={2}>SÉRIE A</TableHead>

@@ -53,7 +53,7 @@ interface Score {
   penalty: Goals;
 }
 
-interface Match {
+export interface Match {
   fixture: Fixture;
   league: League;
   teams: {
