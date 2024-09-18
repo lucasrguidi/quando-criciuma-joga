@@ -64,4 +64,4 @@ interface Match {
   score: Score;
 }
 
-export type LastMatchesData = Match[];
+export type PreviousMatches = Match[];

@@ -5,10 +5,14 @@ setDefaultOptions({
   locale: ptBR,
 });
 
-function dateFormatter(date: string, pattern: string) {
+function dateFormatterWeekDayAndDate(date: string) {
   return (
     format(date, 'iiiiii, dd/MM').charAt(0).toUpperCase() + format(date, 'iiiiii, dd/MM').slice(1)
   );
+}
+
+function dateFormatter(date: string, pattern: string) {
+  return format(date, pattern);
 }
 
 function timeLeft(targetDate: string) {
@@ -49,4 +53,4 @@ function leagueRoundFormatter(round: string, format: 'numeric' | 'full'): string
   return format === 'numeric' ? roundNumber : `${roundNumber}ª rodada`;
 }
 
-export { dateFormatter, leagueRoundFormatter, timeLeft };
+export { dateFormatterWeekDayAndDate, leagueRoundFormatter, timeLeft, dateFormatter };

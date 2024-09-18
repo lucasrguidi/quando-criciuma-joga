@@ -10,12 +10,14 @@ import mock from '@/mock/response.json';
 import { ResponseData } from '@/types';
 import Image from 'next/image';
 
-const data = mock as ResponseData;
-const tableData = mock.tableData;
-
 import { cn } from '@/lib/utils';
+import { TableData } from '@/types/table-data';
 
-export default function Component() {
+interface ILeagueTableProps {
+  table: TableData;
+}
+
+export default function LeagueTable({ table }: ILeagueTableProps) {
   return (
     <Table className="overflow-auto">
       <TableHeader>
@@ -30,7 +32,7 @@ export default function Component() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {tableData.map((row, index) => {
+        {table.map((row, index) => {
           return (
             <TableRow key={row.rank} className={cn(index % 2 === 0 ? 'bg-popover' : 'bg-accent')}>
               <TableCell

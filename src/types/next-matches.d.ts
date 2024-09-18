@@ -64,4 +64,4 @@ export interface Match {
   score: Score;
 }
 
-export type NextMatchesData = Match[];
+export type UpcomingMatches = Match[];

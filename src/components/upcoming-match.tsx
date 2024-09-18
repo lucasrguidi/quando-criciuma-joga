@@ -1,4 +1,8 @@
-import { dateFormatter, leagueRoundFormatter } from '@/helpers/formatters';
+import {
+  dateFormatter,
+  dateFormatterWeekDayAndDate,
+  leagueRoundFormatter,
+} from '@/helpers/formatters';
 import { Match } from '@/types/next-matches';
 import { Calendar, Clock } from 'lucide-react';
 import Image from 'next/image';
@@ -25,7 +29,7 @@ export default function UpcomingMatch({ match }: UpcomingMatchProps) {
         <div className="flex flex-col items-center justify-center">
           <CardTitle className="flex items-center justify-center gap-1 whitespace-nowrap text-base">
             <Calendar size={24} />
-            {dateFormatter(match.fixture.date, 'iiiiii, dd/MM')}
+            {dateFormatterWeekDayAndDate(match.fixture.date)}
           </CardTitle>
           <CardDescription className="flex items-center justify-center gap-1 text-sm font-bold">
             <Clock size={14} />

@@ -1,9 +1,8 @@
-import { LastMatchesData } from './last-matches';
-import { NextMatchesData } from './next-matches';
-import { TableData } from './table-data';
-
+import { UpcomingMatch } from '@/components/upcoming-match';
+import { UpcomingMatches } from './next-matches';
+import { PreviousMatches } from './last-matches';
 export default interface ResponseData {
-  tableData: TableData;
-  nextMatchesData: NextMatchesData;
-  lastMatchesData: LastMatchesData;
+  table: TableData;
+  upcomingMatches: UpcomingMatches;
+  previousMatches: PreviousMatches;
 }
