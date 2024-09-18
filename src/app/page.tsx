@@ -116,8 +116,10 @@ export default async function Home() {
 
           <CardContent className="w-full px-4">
             <TabsContent value="table">
-              <span>Atualizado em: {dateFormatter(data.table[0].update, 'Pp')}</span>
               <LeagueTable table={data.table} />
+              <span className="text-xs">
+                Atualizado em: {dateFormatter(data.table[0].update, 'Pp')}
+              </span>
             </TabsContent>
             <TabsContent value="upcoming-matches">
               <div className="flex flex-col gap-4">
