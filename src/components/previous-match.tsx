@@ -1,9 +1,10 @@
 import { dateFormatter, leagueRoundFormatter } from '@/helpers/formatters';
 import { Match } from '@/types/next-matches';
-import { Calendar, Clock } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import Image from 'next/image';
 import { MdOutlineStadium } from 'react-icons/md';
-import { Card, CardContent, CardDescription, CardFooter, CardTitle } from './ui/card';
+import { Card, CardContent, CardFooter, CardTitle } from './ui/card';
+import { Separator } from './ui/separator';
 
 interface PreviousMatchProps {
   match: Match;
@@ -36,6 +37,8 @@ export default function PreviousMatch({ match }: PreviousMatchProps) {
           height={match.teams.away.id === 140 ? 70 : 55}
         />
       </CardContent>
+
+      <Separator className="my-2" />
 
       <CardFooter className="flex flex-col items-center justify-center gap-1 p-4 pt-0">
         <div className="flex justify-center text-lg font-bold">

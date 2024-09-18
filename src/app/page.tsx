@@ -19,7 +19,8 @@ import { MdOutlineStadium } from 'react-icons/md';
 
 import Table from '@/components/table';
 import UpcomingMatch from '@/components/upcoming-match';
-import PreviousMatch from '@/components/last-match';
+import PreviousMatch from '@/components/previous-match';
+import { Separator } from '@/components/ui/separator';
 
 interface Team {
   id: number;
@@ -32,7 +33,7 @@ export default function Home() {
   const data = mock as ResponseData;
 
   return (
-    <div className="flex h-full w-full flex-col justify-center gap-4 p-4">
+    <div className="flex h-full w-full flex-col justify-center gap-4 p-4 lg:flex-row-reverse lg:items-center">
       <Card className="h-fit w-full">
         <CardHeader className="flex flex-col">
           <CardTitle className="flex items-center justify-center gap-1">
@@ -52,23 +53,25 @@ export default function Home() {
               src={data.nextMatchesData[0].teams.home.logo}
               alt={`Logo do ${data.nextMatchesData[0].teams.home.logo}`}
               title={data.nextMatchesData[0].teams.home.name}
-              width={data.nextMatchesData[0].teams.home.id === 140 ? 150 : 80}
-              height={data.nextMatchesData[0].teams.home.id === 140 ? 150 : 80}
+              width={data.nextMatchesData[0].teams.home.id === 140 ? 170 : 120}
+              height={data.nextMatchesData[0].teams.home.id === 140 ? 170 : 120}
             />
-            <span className="text-4xl">X</span>
+            <span className="text-4xl lg:text-6xl">X</span>
             <Image
               src={data.nextMatchesData[0].teams.away.logo}
               alt={`Logo do ${data.nextMatchesData[0].teams.away.logo}`}
               title={data.nextMatchesData[0].teams.away.name}
-              width={data.nextMatchesData[0].teams.away.id === 140 ? 150 : 80}
-              height={data.nextMatchesData[0].teams.away.id === 140 ? 150 : 80}
+              width={data.nextMatchesData[0].teams.away.id === 140 ? 170 : 120}
+              height={data.nextMatchesData[0].teams.away.id === 140 ? 170 : 120}
             />
           </div>
         </CardContent>
 
-        <CardFooter className="justify-center">
+        <Separator />
+
+        <CardFooter className="justify-center lg:pt-6">
           <div className="flex flex-col items-center gap-1">
-            <div className="flex items-center justify-center gap-2 text-xl font-bold">
+            <div className="flex items-center justify-center gap-2 text-xl font-bold lg:text-2xl">
               {data.nextMatchesData[0].teams.home.name}
               <span>X</span>
               {data.nextMatchesData[0].teams.away.name}
@@ -90,12 +93,12 @@ export default function Home() {
                 height={24}
               />
             </div>
-            <span className="text-base font-semibold">
+            <span className="text-base font-semibold lg:text-lg">
               {leagueRoundFormatter(data.nextMatchesData[0].league.round, 'full')}
             </span>
             <div className="flex items-center gap-1">
               <MdOutlineStadium size={16} />
-              <span className="text-base font-semibold">
+              <span className="text-base font-semibold lg:text-lg">
                 {data.nextMatchesData[0].fixture.venue.name}
               </span>
             </div>
@@ -105,7 +108,7 @@ export default function Home() {
 
       <Card className="h-full w-full overflow-auto">
         <Tabs className="w-full" defaultValue="table">
-          <CardHeader className="px-4">
+          <CardHeader className="px-4 lg:justify-center">
             <TabsList>
               <TabsTrigger value="table">Tabela</TabsTrigger>
               <TabsTrigger value="upcoming-matches">Próximos Jogos</TabsTrigger>
