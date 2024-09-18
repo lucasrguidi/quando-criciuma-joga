@@ -65,14 +65,15 @@ export default async function Home() {
           </div>
         </CardContent>
 
-        <Separator />
+        <Separator className="my-2 lg:my-0" />
 
         <CardFooter className="justify-center lg:pt-6">
           <div className="flex flex-col items-center gap-1">
-            <div className="flex items-center justify-center gap-2 text-xl font-bold lg:text-2xl">
-              {data.upcomingMatches[0].teams.home.name}
-              <span>X</span>
-              {data.upcomingMatches[0].teams.away.name}
+            <div className="whitespace-nowrap text-lg font-bold lg:text-2xl">
+              <span>
+                {data.upcomingMatches[0].teams.home.name} X{' '}
+                {data.upcomingMatches[0].teams.away.name}
+              </span>
             </div>
             <div className="flex items-center gap-2">
               <Image
