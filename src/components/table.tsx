@@ -6,8 +6,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import mock from '@/mock/response.json';
-import { ResponseData } from '@/types';
 import Image from 'next/image';
 
 import { cn } from '@/lib/utils';

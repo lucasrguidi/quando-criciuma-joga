@@ -33,7 +33,7 @@ export default async function Home() {
   )) as ResponseData;
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex h-full flex-col bg-yellow-500">
       <div className="flex h-[95%] w-full flex-col justify-center gap-4 p-4 lg:flex-row-reverse lg:items-center">
         <Card className="h-fit w-full">
           <CardHeader className="flex flex-col">
@@ -143,9 +143,11 @@ export default async function Home() {
           </Tabs>
         </Card>
       </div>
-      <div className="flex h-[5%] items-center justify-center gap-2 bg-white p-2">
-        <span className="text-center text-xs font-bold">Desenvolvido por Lucas Guidi</span>
-        <div className="flex items-center gap-2">
+      <div className="flex h-[5%] items-center justify-center gap-2 bg-background p-2">
+        <span className="text-center text-xs font-bold text-foreground">
+          Desenvolvido por Lucas Guidi
+        </span>
+        <div className="flex items-center gap-2 text-foreground">
           <a href="https://www.instagram.com/lucasrguidi/" target="_blank">
             <SiInstagram size={16} className="cursor-pointer" />
           </a>
