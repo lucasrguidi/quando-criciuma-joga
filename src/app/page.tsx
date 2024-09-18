@@ -33,7 +33,7 @@ export default async function Home() {
   )) as ResponseData;
 
   return (
-    <div className="flex h-full flex-col bg-yellow-500">
+    <div className="flex h-full flex-col bg-primary">
       <div className="flex h-[95%] w-full flex-col justify-center gap-4 p-4 lg:flex-row-reverse lg:items-center">
         <Card className="h-fit w-full">
           <CardHeader className="flex flex-col">
