@@ -5,25 +5,13 @@ import Image from 'next/image';
 import { MdOutlineStadium } from 'react-icons/md';
 import { Card, CardContent, CardDescription, CardFooter, CardTitle } from './ui/card';
 
-interface NextMatchProps {
+interface UpcomingMatchProps {
   match: Match;
 }
 
-export default function NextMatch({ match }: NextMatchProps) {
+export default function UpcomingMatch({ match }: UpcomingMatchProps) {
   return (
     <Card className="h-fit w-full">
-      {/* <CardHeader className="flex flex-col p-4">
-        <CardTitle className="flex items-center justify-center gap-1 text-base">
-          <Calendar size={24} />
-          {dateFormatter(match.fixture.date, 'iiiiii, dd/MM')}
-        </CardTitle>
-        <CardDescription className="flex items-center justify-center gap-1 text-sm font-bold">
-          <Clock size={14} />
-          16h00
-        </CardDescription>
-        <TimeLeft targetDate={match.fixture.date} />
-      </CardHeader> */}
-
       <CardContent className="flex items-center justify-between p-4 pb-0">
         <Image
           src={match.teams.home.logo}
@@ -33,7 +21,7 @@ export default function NextMatch({ match }: NextMatchProps) {
           height={match.teams.home.id === 140 ? 70 : 55}
         />
 
-        <div className="flex flex-col items-center justify-center gap-1 p-4">
+        <div className="flex flex-col items-center justify-center">
           <CardTitle className="flex items-center justify-center gap-1 whitespace-nowrap text-base">
             <Calendar size={24} />
             {dateFormatter(match.fixture.date, 'iiiiii, dd/MM')}

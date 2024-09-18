@@ -17,8 +17,9 @@ import { Calendar, Clock } from 'lucide-react';
 import Image from 'next/image';
 import { MdOutlineStadium } from 'react-icons/md';
 
-import NextMatch from '@/components/next-match';
 import Table from '@/components/table';
+import UpcomingMatch from '@/components/upcoming-match';
+import PreviousMatch from '@/components/last-match';
 
 interface Team {
   id: number;
@@ -102,13 +103,13 @@ export default function Home() {
         </CardFooter>
       </Card>
 
-      <Card className="h-1/2 w-full overflow-auto">
+      <Card className="h-full w-full overflow-auto">
         <Tabs className="w-full" defaultValue="table">
           <CardHeader className="px-4">
             <TabsList>
               <TabsTrigger value="table">Tabela</TabsTrigger>
-              <TabsTrigger value="next-matches">Próximos Jogos</TabsTrigger>
-              <TabsTrigger value="last-matches">Últimos Jogos</TabsTrigger>
+              <TabsTrigger value="upcoming-matches">Próximos Jogos</TabsTrigger>
+              <TabsTrigger value="previous-matches">Últimos Jogos</TabsTrigger>
             </TabsList>
           </CardHeader>
 
@@ -116,14 +117,20 @@ export default function Home() {
             <TabsContent value="table">
               <Table />
             </TabsContent>
-            <TabsContent value="next-matches">
+            <TabsContent value="upcoming-matches">
               <div className="flex flex-col gap-4">
                 {data.nextMatchesData.map((match, index) => {
-                  return <NextMatch key={index} match={match} />;
+                  return <UpcomingMatch key={index} match={match} />;
                 })}
               </div>
             </TabsContent>
-            <TabsContent value="last-matches">last-matches</TabsContent>
+            <TabsContent value="previous-matches">
+              <div className="flex flex-col gap-4">
+                {data.lastMatchesData.map((match, index) => {
+                  return <PreviousMatch key={index} match={match} />;
+                })}
+              </div>
+            </TabsContent>
           </CardContent>
         </Tabs>
       </Card>
