@@ -33,7 +33,7 @@ export default function UpcomingMatch({ match }: UpcomingMatchProps) {
           </CardTitle>
           <CardDescription className="flex items-center justify-center gap-1 text-sm font-bold">
             <Clock size={14} />
-            16h00
+            {dateFormatter(match.fixture.date, 'p')}h
           </CardDescription>
         </div>
 

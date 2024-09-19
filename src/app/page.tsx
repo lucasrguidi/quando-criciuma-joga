@@ -43,7 +43,7 @@ export default async function Home() {
             </CardTitle>
             <CardDescription className="flex items-center justify-center gap-1 font-bold">
               <Clock size={14} />
-              16h00
+              {dateFormatter(data.upcomingMatches[0].fixture.date, 'p')}h
             </CardDescription>
             <TimeLeft targetDate={data.upcomingMatches[0].fixture.date} />
           </CardHeader>
