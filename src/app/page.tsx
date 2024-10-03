@@ -28,9 +28,9 @@ import { Separator } from '@/components/ui/separator';
 import UpcomingMatch from '@/components/upcoming-match';
 
 export default async function Home() {
-  const data = (await fetch(process.env.API_URL as string).then((res) =>
-    res.json(),
-  )) as ResponseData;
+  const data = (await fetch(process.env.API_URL as string, {
+    cache: 'no-cache',
+  }).then((res) => res.json())) as ResponseData;
 
   return (
     <div className="flex h-full flex-col bg-primary">
