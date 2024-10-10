@@ -7,11 +7,10 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import {
-  dateFormatter,
-  dateFormatterWeekDayAndDate,
-  leagueRoundFormatter,
-} from '@/helpers/formatters';
+
+import dateFormatter from '@/helpers/date-formatter';
+import dateFormatterWeekDayAndDate from '@/helpers/date-formatter-weekday-and-date';
+import leagueRoundFormatter from '@/helpers/league-round-formatter';
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ResponseData } from '@/types';
@@ -32,6 +31,9 @@ export default async function Home() {
     cache: 'no-cache',
   }).then((res) => res.json())) as ResponseData;
 
+  const nextMatch = data.upcomingMatches[0];
+  console.log('🚀 ~ Home ~ nextMatch:', nextMatch);
+
   return (
     <div className="flex h-full flex-col bg-primary">
       <div className="flex h-[95%] w-full flex-col justify-center gap-4 p-4 lg:flex-row-reverse lg:items-center">
@@ -39,31 +41,31 @@ export default async function Home() {
           <CardHeader className="flex flex-col">
             <CardTitle className="flex items-center justify-center gap-1">
               <Calendar size={24} />
-              {dateFormatterWeekDayAndDate(data.upcomingMatches[0].fixture.date)}
+              {dateFormatterWeekDayAndDate(nextMatch.fixture.date)}
             </CardTitle>
             <CardDescription className="flex items-center justify-center gap-1 font-bold">
               <Clock size={14} />
-              {dateFormatter(data.upcomingMatches[0].fixture.date, 'p')}h
+              {dateFormatter(nextMatch.fixture.date, 'p')}h
             </CardDescription>
-            <TimeLeft targetDate={data.upcomingMatches[0].fixture.date} />
+            <TimeLeft targetDate={nextMatch.fixture.date} />
           </CardHeader>
 
           <CardContent className="flex flex-col gap-4">
             <div className="grid grid-cols-3 items-center justify-items-center">
               <Image
-                src={data.upcomingMatches[0].teams.home.logo}
-                alt={`Logo do ${data.upcomingMatches[0].teams.home.logo}`}
-                title={data.upcomingMatches[0].teams.home.name}
-                width={data.upcomingMatches[0].teams.home.id === 140 ? 170 : 120}
-                height={data.upcomingMatches[0].teams.home.id === 140 ? 170 : 120}
+                src={nextMatch.teams.home.logo}
+                alt={`Logo do ${nextMatch.teams.home.logo}`}
+                title={nextMatch.teams.home.name}
+                width={nextMatch.teams.home.id === 140 ? 170 : 120}
+                height={nextMatch.teams.home.id === 140 ? 170 : 120}
               />
               <span className="text-4xl lg:text-6xl">X</span>
               <Image
-                src={data.upcomingMatches[0].teams.away.logo}
-                alt={`Logo do ${data.upcomingMatches[0].teams.away.logo}`}
-                title={data.upcomingMatches[0].teams.away.name}
-                width={data.upcomingMatches[0].teams.away.id === 140 ? 170 : 120}
-                height={data.upcomingMatches[0].teams.away.id === 140 ? 170 : 120}
+                src={nextMatch.teams.away.logo}
+                alt={`Logo do ${nextMatch.teams.away.logo}`}
+                title={nextMatch.teams.away.name}
+                width={nextMatch.teams.away.id === 140 ? 170 : 120}
+                height={nextMatch.teams.away.id === 140 ? 170 : 120}
               />
             </div>
           </CardContent>
@@ -74,34 +76,33 @@ export default async function Home() {
             <div className="flex flex-col items-center gap-1">
               <div className="whitespace-nowrap text-lg font-bold lg:text-2xl">
                 <span>
-                  {data.upcomingMatches[0].teams.home.name} X{' '}
-                  {data.upcomingMatches[0].teams.away.name}
+                  {nextMatch.teams.home.name} X {nextMatch.teams.away.name}
                 </span>
               </div>
               <div className="flex items-center gap-2">
                 <Image
-                  src={data.upcomingMatches[0].league.flag}
-                  alt={`Bandeira do ${data.upcomingMatches[0].league.country}`}
-                  title={data.upcomingMatches[0].league.country}
+                  src={nextMatch.league.flag}
+                  alt={`Bandeira do ${nextMatch.league.country}`}
+                  title={nextMatch.league.country}
                   width={20}
                   height={20}
                 />
-                <span className="text-base">{data.upcomingMatches[0].league.name}</span>
+                <span className="text-base">{nextMatch.league.name}</span>
                 <Image
-                  src={data.upcomingMatches[0].league.logo}
-                  alt={`Logo do campeonato ${data.upcomingMatches[0].league.name}`}
-                  title={data.upcomingMatches[0].league.name}
+                  src={nextMatch.league.logo}
+                  alt={`Logo do campeonato ${nextMatch.league.name}`}
+                  title={nextMatch.league.name}
                   width={24}
                   height={24}
                 />
               </div>
               <span className="text-base font-semibold lg:text-lg">
-                {leagueRoundFormatter(data.upcomingMatches[0].league.round, 'full')}
+                {leagueRoundFormatter(nextMatch.league.round, 'full')}
               </span>
               <div className="flex items-center gap-1">
                 <MdOutlineStadium size={16} />
                 <span className="text-base font-semibold lg:text-lg">
-                  {data.upcomingMatches[0].fixture.venue.name}
+                  {nextMatch.fixture.venue.name}
                 </span>
               </div>
             </div>

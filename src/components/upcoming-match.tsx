@@ -1,8 +1,6 @@
-import {
-  dateFormatter,
-  dateFormatterWeekDayAndDate,
-  leagueRoundFormatter,
-} from '@/helpers/formatters';
+import dateFormatter from '@/helpers/date-formatter';
+import dateFormatterWeekDayAndDate from '@/helpers/date-formatter-weekday-and-date';
+import leagueRoundFormatter from '@/helpers/league-round-formatter';
 import { Match } from '@/types/next-matches';
 import { Calendar, Clock } from 'lucide-react';
 import Image from 'next/image';

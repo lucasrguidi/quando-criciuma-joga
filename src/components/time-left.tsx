@@ -1,5 +1,6 @@
 'use client';
-import { timeLeft } from '@/helpers/formatters';
+
+import timeLeft from '@/helpers/time-left';
 import { useEffect, useState } from 'react';
 import { CardDescription } from './ui/card';
 

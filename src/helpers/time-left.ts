@@ -1,21 +1,11 @@
-import { format, intervalToDuration, setDefaultOptions } from 'date-fns';
+import { intervalToDuration, setDefaultOptions } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
 setDefaultOptions({
   locale: ptBR,
 });
 
-function dateFormatterWeekDayAndDate(date: string) {
-  return (
-    format(date, 'iiiiii, dd/MM').charAt(0).toUpperCase() + format(date, 'iiiiii, dd/MM').slice(1)
-  );
-}
-
-function dateFormatter(date: string, pattern: string) {
-  return format(date, pattern);
-}
-
-function timeLeft(targetDate: string) {
+export default function timeLeft(targetDate: string) {
   return () => {
     const now = new Date();
     const target = new Date(targetDate);
@@ -47,10 +37,3 @@ function timeLeft(targetDate: string) {
     return formatted;
   };
 }
-
-function leagueRoundFormatter(round: string, format: 'numeric' | 'full'): string {
-  const roundNumber = round.replace('Regular Season - ', '');
-  return format === 'numeric' ? roundNumber : `${roundNumber}ª rodada`;
-}
-
-export { dateFormatterWeekDayAndDate, leagueRoundFormatter, timeLeft, dateFormatter };
