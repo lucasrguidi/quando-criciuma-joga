@@ -25,14 +25,18 @@ export default function UpcomingMatch({ match }: UpcomingMatchProps) {
           height={match.teams.home.id === 140 ? 70 : 55}
         />
 
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center gap-1">
           <CardTitle className="flex items-center justify-center gap-1 whitespace-nowrap text-base">
             <Calendar size={24} />
             {dateFormatterWeekDayAndDate(match.fixture.date)}
           </CardTitle>
           <CardDescription className="flex items-center justify-center gap-1 text-sm font-bold">
             <Clock size={14} />
-            {dateFormatter(match.fixture.date, 'p')}h
+            {match.fixture.status.short === 'TBD' ? (
+              <span>A definir</span>
+            ) : (
+              <span>{dateFormatter(match.fixture.date, 'p')}h</span>
+            )}
           </CardDescription>
         </div>
 
