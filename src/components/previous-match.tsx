@@ -1,3 +1,4 @@
+'use client';
 import dateFormatterWeekDayAndDate from '@/helpers/date-formatter-weekday-and-date';
 import leagueRoundFormatter from '@/helpers/league-round-formatter';
 import { Match } from '@/types/next-matches';

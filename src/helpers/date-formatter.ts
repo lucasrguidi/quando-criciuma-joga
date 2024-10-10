@@ -1,5 +1,3 @@
-'use client';
-
 import { format, setDefaultOptions } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
