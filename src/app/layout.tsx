@@ -4,6 +4,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '../styles/globals.css';
 
+import { Analytics } from '@vercel/analytics/next';
+
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
@@ -28,6 +30,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <Analytics />
           <div className="absolute bottom-2 right-2">
             <ThemeToggle />
           </div>

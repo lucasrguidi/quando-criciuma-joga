@@ -5,8 +5,7 @@ import dateFormatter from '@/helpers/date-formatter';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ResponseData } from '@/types';
 
-import { SiGithub, SiInstagram, SiLinkedin } from '@icons-pack/react-simple-icons';
-
+import Footer from '@/components/footer';
 import NextMatch from '@/components/next-match';
 import PreviousMatch from '@/components/previous-match';
 import LeagueTable from '@/components/table';
@@ -59,22 +58,7 @@ export default async function Home() {
           </Tabs>
         </Card>
       </div>
-      <div className="flex h-[5%] items-center justify-center gap-2 bg-background p-2">
-        <span className="text-center text-xs font-bold text-foreground">
-          Desenvolvido por Lucas Guidi
-        </span>
-        <div className="flex items-center gap-2 text-foreground">
-          <a href="https://www.instagram.com/lucasrguidi/" target="_blank">
-            <SiInstagram size={16} className="cursor-pointer" />
-          </a>
-          <a href="https://www.linkedin.com/in/lucasrguidi/" target="_blank">
-            <SiLinkedin size={16} className="cursor-pointer" />
-          </a>
-          <a href="https://github.com/lucasrguidi" target="_blank">
-            <SiGithub size={16} className="cursor-pointer" />
-          </a>
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 }
