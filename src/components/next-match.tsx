@@ -8,8 +8,12 @@ import { Separator } from '@radix-ui/react-separator';
 import { Calendar, Clock } from 'lucide-react';
 import Image from 'next/image';
 import { MdOutlineStadium } from 'react-icons/md';
-import TimeLeft from './time-left';
+
+import dynamic from 'next/dynamic';
+import { AspectRatio } from './ui/aspect-ratio';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
+
+const TimeLeft = dynamic(() => import('./time-left'), { ssr: false });
 
 interface NextMatchProps {
   match: Match;
@@ -32,21 +36,27 @@ export default function NextMatch({ match }: NextMatchProps) {
 
       <CardContent className="flex flex-col gap-4">
         <div className="grid grid-cols-3 items-center justify-items-center">
-          <Image
-            src={match.teams.home.logo}
-            alt={`Logo do ${match.teams.home.logo}`}
-            title={match.teams.home.name}
-            width={match.teams.home.id === 140 ? 170 : 120}
-            height={match.teams.home.id === 140 ? 170 : 120}
-          />
+          <AspectRatio ratio={4 / 3}>
+            <Image
+              src={match.teams.home.logo}
+              alt={`Logo do ${match.teams.home.logo}`}
+              title={match.teams.home.name}
+              fill
+              priority
+              className="h-full w-full object-contain"
+            />
+          </AspectRatio>
           <span className="text-4xl lg:text-6xl">X</span>
-          <Image
-            src={match.teams.away.logo}
-            alt={`Logo do ${match.teams.away.logo}`}
-            title={match.teams.away.name}
-            width={match.teams.away.id === 140 ? 170 : 120}
-            height={match.teams.away.id === 140 ? 170 : 120}
-          />
+          <AspectRatio ratio={4 / 3}>
+            <Image
+              src={match.teams.away.logo}
+              alt={`Logo do ${match.teams.away.logo}`}
+              title={match.teams.away.name}
+              className="h-full w-full object-contain"
+              fill
+              priority
+            />
+          </AspectRatio>
         </div>
       </CardContent>
 

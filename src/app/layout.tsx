@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`h-dvh ${inter.className}`}>
+      <body className={`lg:h-dvh ${inter.className}`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -31,7 +31,7 @@ export default function RootLayout({
         >
           {children}
           <Analytics />
-          <div className="absolute bottom-2 right-2">
+          <div className="fixed bottom-2 right-2">
             <ThemeToggle />
           </div>
         </ThemeProvider>
